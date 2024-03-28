@@ -9,29 +9,32 @@ const menu = {
 // Function to display menu items by category
 function displayMenuItems(menu) {
     // Get the menu container element from the HTML
-
+    let menuContainer = document.getElementById("menu");
     // Loop through each category and its items in the menu object
-
+    for (let category in menu) {
+        if (menu.hasOwnProperty(category)) {
         // Create an element to represent the category
-
+        let categoryElement = document.createElement("h1");
         // Set the text content of the category element to the category name
-
+        categoryElement.textContent = category;
         // Append the category element to the menu container
-
+        menuContainer.appendChild(categoryElement);
         // Create an element to represent a list of items
-
+        let itemList = document.createElement("ul");
         // Append a list of items element to the menu container
-
+        menuContainer.appendChild(itemList);
         // Loop through the items in the category and create list items
-
+        menu[category].forEach(function(item) {
             // Create a list item element
-
+            var listItem = document.createElement("li");
             // Set the text content of the list item element to the item name
-
+            listItem.textContent = item;
             // Attach a click event listener to the list item to add it to the order
-
+            listItem.addEventListener("click", function() {addToOrder(item);});
             // Append the list item to the list of items
-
+            itemList.appendChild(listItem);});
+        }
+    }
             
 }
 
